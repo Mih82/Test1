@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	<link href="N:\localserver\OpenServer\domains\test1.loc\resources\views\test1\style.css" type="text/css" rel="stylesheet">
+	<style> 
+	span{
+		padding:5px; /* Поля вокруг текста */
+	}
+	
+	p{
+		color:green;
+	}
+	.classy{
+		background:red;
+	}
+	.red{
+		background:red;
+	}
+	.green{
+		background:green;
+	}
+	td {
+		width: 50px;
+		height: 50px;
+		border: 1px solid black;
+	}
+	
+	
+	</style>
+	</head>
+	<body>
+
+<div id="elem">
+<p></p>
+	<input type="text" >
+</div>
+	<input type="submit" id="button" value="click">
+
+	
+	<!--
+	<input id="elem" value="привет">
+	<p ></p>
+	<a href="/" id="">ссылка</a>
+	<input id="elem" value="3">
+	<select id="select">
+		<option value="1">вс</option>
+		<option value="2">пн</option>
+		<option value="3">вт</option>
+		<option value="4" selected>ср</option>
+		<option value="5">чт</option>
+		<option value="6">пт</option>
+		<option value="7">сб</option>
+	</select>
+	<textarea id="text">text</textarea>
+	<input type="checkbox" checked id="checkbox">
+	<button id="button">Отправить</button>
+	<button id="open">открыть</button>
+	<button id="infa">инфа</button>
+	<input type="radio" name="elem" value="1" checked>
+	<input type="radio" name="elem" value="2">
+	<input type="radio" name="elem" value="3">
+	<button id="buttonRadio">Кнопка</button>
+	-->
+ 	<script>
+	
+	"use strict";
+	let input = document.querySelector('#elem input');
+	let elem = document.querySelector('#elem');
+	let randomNum = Math.floor(Math.random() * 100) ;
+	console.log(randomNum);
+	input.addEventListener('blur', function(){
+		let ok ='' ;
+		if( input.value == randomNum ){ ok = 'Угадали' }
+		else{ if( input.value < randomNum ){ ok = ' Надо больше ' } else{ ok = ' Надо меньше ' } }
+		let p = document.createElement('p')
+		p.innerHTML = ok
+		elem.appendChild( p );
+	});	
+
+	button.addEventListener('click', function(){
+	console.log( textarea.value.length );
+		let check = document.querySelectorAll('#elem input');
+		for( let elem of check){
+			if( elem.checked){ 
+				if( elem.value == 1 ){	textarea1()	}
+				if( elem.value == 2){  textarea2()	}
+				if( elem.value == 3){  textarea3()	}
+			
+			}
+	   }
+	});
+	function textarea1(){
+		console.log( textarea.value.length );
+	}
+	function textarea2(){
+		console.log( textarea.value.split(' ').length );
+	}
+	function textarea3(){
+		console.log( textarea.value.split(' ').join('').length );
+	}	
+	
+   </script>
+	</body>
+</html>
+	
+<!--	
+////
+/*		
+arr = [1, [2, 7, 8], [3, 4], [5, [6, 7]]];
+let resoult = [];
+function func(arr){
+	for( let elem in arr ){
+		if( typeof arr[elem] == 'object' ){
+				let i = true;
+			for(let elem1 of arr[elem] ){
+				if( typeof arr[elem1] == 'object' ){
+					i = false ;
+					func( arr[elem1] );
+			    }
+		}
+			if( i == true ){   resoult[elem] = arr[elem] }	;
+	}
+  }	
+}
+func(arr)
+console.log( resoult ); // 
+//alert( resoult );
+*/
+////
+/*
+let result = getInt([1, 2, 3, 7], [2, 3, 4], [4, 3, 2]);
+console.log(result); // выведет [2, 3]
+
+function getInt(...arrs){
+	let result = [];
+	
+	 let arr0 = arrs.shift();
+		 for(let elem of arr0 ){
+			let	i = false ;
+				for(let arr of arrs ){
+					if( arr.indexOf(elem) !== -1 ){
+						i = true;
+					}
+				}
+		if(i == true) { result.push(elem)} ;
+		 }
+	
+	return result;
+}
+*/
+//
+let now = new Date();
+//console.log( ( new Date( now.getFullYear(), now.getMonth(), now.getDate(), now.getHours(), now.getMinutes(), now.getSeconds() ) )   );
+console.log( ( now - new Date(now.getFullYear(), now.getMonth(), now.getDate(),0,0,0  ) )/1000/60/60  );
